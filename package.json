@@ -1,20 +1,20 @@
 {
-  "name": "@horang-labs/tessera",
-  "version": "0.1.3",
-  "description": "Open-source web and desktop workspace for AI coding agents",
-  "private": false,
+  "name": "durins-realm",
+  "version": "0.1.0",
+  "description": "Durin's Realm — Cockpit de orquestracao do D.TAI",
+  "private": true,
   "license": "Apache-2.0",
   "author": {
-    "name": "Horang Labs, Inc."
+    "name": "Joao Pedro Barros (JB)"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/horang-labs/tessera.git"
+    "url": "git+https://github.com/Joaoppob/durins-realm.git"
   },
   "bugs": {
-    "url": "https://github.com/horang-labs/tessera/issues"
+    "url": "https://github.com/Joaoppob/durins-realm/issues"
   },
-  "homepage": "https://github.com/horang-labs/tessera",
+  "homepage": "https://github.com/Joaoppob/durins-realm",
   "publishConfig": {
     "access": "public"
   },
@@ -22,13 +22,16 @@
     "coding-agent",
     "claude-code",
     "codex",
+    "opencode",
     "electron",
     "nextjs",
-    "websocket"
+    "websocket",
+    "durins-realm",
+    "dtai"
   ],
   "main": "dist-server/server.js",
   "bin": {
-    "tessera": "bin/tessera.mjs"
+    "durins-realm": "bin/tessera.mjs"
   },
   "files": [
     "bin/",
@@ -133,9 +136,9 @@
     "npm": ">=10.0.0"
   },
   "build": {
-    "appId": "app.tessera.desktop",
-    "productName": "Tessera",
-    "copyright": "Copyright (c) 2026 Horang Labs, Inc.",
+    "appId": "app.durins-realm.desktop",
+    "productName": "Durin's Realm",
+    "copyright": "Copyright (c) 2026 Joao Pedro Barros (JB) — D.TAI",
     "afterPack": "scripts/electron-after-pack.cjs",
     "npmRebuild": false,
     "asar": true,
@@ -163,8 +166,8 @@
       ],
       "category": "Development",
       "icon": "assets/icon.png",
-      "maintainer": "Horang Labs, Inc. <faggomsa@gmail.com>",
-      "executableName": "tessera"
+      "maintainer": "Joao Pedro Barros (JB) — D.TAI",
+      "executableName": "durins-realm"
     },
     "win": {
       "target": "portable",
@@ -179,15 +182,15 @@
       "entitlementsInherit": "scripts/entitlements.mac.plist"
     },
     "dmg": {
-      "artifactName": "Tessera-${version}-macos-${arch}.${ext}",
+      "artifactName": "Durins-Realm-${version}-macos-${arch}.${ext}",
       "sign": true
     },
     "portable": {
-      "artifactName": "Tessera-${version}-windows-${arch}.${ext}"
+      "artifactName": "Durins-Realm-${version}-windows-${arch}.${ext}"
     },
     "deb": {
       "packageName": "tessera",
-      "artifactName": "Tessera-${version}-linux-${arch}.${ext}"
+      "artifactName": "Durins-Realm-${version}-linux-${arch}.${ext}"
     }
   }
 }

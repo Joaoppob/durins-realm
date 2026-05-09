@@ -7,8 +7,8 @@ import { ElectronCloseDialog } from '@/components/layout/electron-close-dialog';
 import { TelemetryProvider } from '@/components/telemetry/telemetry-provider';
 
 export const metadata: Metadata = {
-  title: 'Tessera',
-  description: 'Multi-provider chat development tool',
+  title: "Durin's Realm",
+  description: "Cockpit de orquestracao do D.TAI — Durin's Realm Hub",
 };
 
 // Inline script to prevent FOUC (Flash of Unstyled Content)
@@ -18,7 +18,7 @@ const themeScript = `
   try {
     var stored = localStorage.getItem('tessera:settings');
     var settings = stored ? JSON.parse(stored).state.settings : {};
-    var theme = settings.theme || 'auto';
+    var theme = settings.theme || 'dark';
     var isDark = theme === 'dark' || (theme === 'auto' && window.matchMedia('(prefers-color-scheme: dark)').matches);
     if (isDark) document.documentElement.classList.add('dark');
     var scales = [0.8125, 0.875, 0.9375, 1];
@@ -46,6 +46,9 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&display=swap" rel="stylesheet" />
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
       </head>
       <body>

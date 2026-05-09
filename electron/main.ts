@@ -24,25 +24,25 @@ const WINDOWS_TITLEBAR_HEIGHT = 40;
 const WINDOWS_TITLEBAR_OVERLAY_HEIGHT = WINDOWS_TITLEBAR_HEIGHT - 1;
 const WINDOWS_TITLEBAR_THEME = {
   light: {
-    color: '#f2f2f0',
-    symbolColor: '#1a1a1a',
+    color: '#26211C',
+    symbolColor: '#EBDAC6',
   },
   dark: {
-    color: '#17191c',
-    symbolColor: '#d7dde3',
+    color: '#26211C',
+    symbolColor: '#EBDAC6',
   },
 } satisfies Record<TitlebarTheme, { color: string; symbolColor: string }>;
 const WINDOWS_TITLEBAR_DIMMED_THEME = {
   light: {
-    color: '#5d5f60',
-    symbolColor: '#f5f7f8',
+    color: '#1a1510',
+    symbolColor: '#8A7E6E',
   },
   dark: {
-    color: '#090a0b',
-    symbolColor: '#d7dde3',
+    color: '#1a1510',
+    symbolColor: '#8A7E6E',
   },
 } satisfies Record<TitlebarTheme, { color: string; symbolColor: string }>;
-const TESSERA_HOMEPAGE = 'https://github.com/horang-labs/tessera';
+const TESSERA_HOMEPAGE = 'https://github.com/Joaoppob/durins-realm';
 
 function getTitlebarOverlayOptions(theme: TitlebarTheme, options: TitlebarThemeOptions = {}) {
   const palette = options.dimmed ? WINDOWS_TITLEBAR_DIMMED_THEME[theme] : WINDOWS_TITLEBAR_THEME[theme];
@@ -115,7 +115,7 @@ function buildTitlebarMenuTemplate(
     case 'help':
       return [
         {
-          label: 'Tessera on GitHub',
+          label: "Durin's Realm on GitHub",
           click: () => {
             shell.openExternal(TESSERA_HOMEPAGE);
           },
@@ -304,10 +304,10 @@ function requestAppQuit(): void {
 function getWindowsCloseAction(win: BrowserWindow): WindowCloseAction {
   const response = dialog.showMessageBoxSync(win, {
     type: 'question',
-    title: 'Tessera',
-    message: 'Close Tessera?',
+    title: "Durin's Realm",
+    message: "Close Durin's Realm?",
     detail: 'Quit the app completely, or keep it running in the system tray?',
-    buttons: ['Quit Tessera', 'Send to Tray', 'Cancel'],
+    buttons: ["Quit Durin's Realm", 'Send to Tray', 'Cancel'],
     defaultId: 1,
     cancelId: 2,
     noLink: true,
@@ -489,7 +489,7 @@ async function startServer(): Promise<number> {
       serverProcess = null;
       if (!isQuitting) {
         dialog.showErrorBox(
-          'Tessera',
+          "Durin's Realm",
           `Server exited unexpectedly (code ${code}). The application will now close.`
         );
         requestAppQuit();
@@ -541,17 +541,17 @@ function createWindow(port: number): BrowserWindow {
     height: 900,
     minWidth: 800,
     minHeight: 600,
-    title: 'Tessera',
-    show: false,
-    icon: path.join(__dirname, '..', 'assets', 'icon.png'),
-    webPreferences: {
-      preload: path.join(__dirname, 'preload.js'),
-      contextIsolation: true,
-      nodeIntegration: false,
-      webSecurity: true,
-    },
-    autoHideMenuBar: !isMac,
-    backgroundColor: isWindows ? WINDOWS_TITLEBAR_THEME[initialTitlebarTheme].color : undefined,
+      title: "Durin's Realm",
+      show: false,
+      icon: path.join(__dirname, '..', 'assets', 'icon.png'),
+      webPreferences: {
+        preload: path.join(__dirname, 'preload.js'),
+        contextIsolation: true,
+        nodeIntegration: false,
+        webSecurity: true,
+      },
+      autoHideMenuBar: !isMac,
+      backgroundColor: '#26211C',
     titleBarStyle: isMac ? 'hiddenInset' : isWindows ? 'hidden' : 'default',
     titleBarOverlay: isWindows ? getTitlebarOverlayOptions(initialTitlebarTheme) : false,
   });
@@ -571,7 +571,7 @@ function createWindow(port: number): BrowserWindow {
   const showTimeout = setTimeout(() => {
     if (!win.isVisible()) {
       log('error', 'ready-to-show timeout; force-showing window');
-      console.error('[Tessera] ready-to-show timeout — force-showing window');
+      console.error("[Durin's Realm] ready-to-show timeout — force-showing window");
       win.show();
       win.webContents.openDevTools();
     }
@@ -582,12 +582,12 @@ function createWindow(port: number): BrowserWindow {
   // Log renderer failures
   win.webContents.on('did-fail-load', (_e, code, desc) => {
     log('error', `Page load failed: ${code} ${desc} (${url})`);
-    console.error(`[Tessera] Page load failed: ${code} ${desc} (${url})`);
+    console.error(`[Durin's Realm] Page load failed: ${code} ${desc} (${url})`);
   });
 
   win.webContents.on('render-process-gone', (_e, details) => {
     log('error', `Renderer crashed: ${details.reason}`);
-    console.error('[Tessera] Renderer crashed:', details.reason);
+    console.error("[Durin's Realm] Renderer crashed:", details.reason);
   });
 
   // Open external links in system browser (only http/https for security)
@@ -610,7 +610,7 @@ function createWindow(port: number): BrowserWindow {
     });
   });
 
-  // Windows asks in the renderer so the prompt matches the Tessera UI and can
+  // Windows asks in the renderer so the prompt matches the Durin's Realm UI and can
   // remember the chosen behavior. Other platforms preserve tray behavior.
   win.on('close', (event) => {
     if (isQuitting) return;
@@ -654,9 +654,9 @@ function createPopoutWindow(port: number, route: string): BrowserWindow {
     height: 800,
     minWidth: 600,
     minHeight: 400,
-    title: 'Tessera Board',
-    show: false,
-    icon: path.join(__dirname, '..', 'assets', 'icon.png'),
+      title: "Durin's Realm Board",
+      show: false,
+      icon: path.join(__dirname, '..', 'assets', 'icon.png'),
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
       contextIsolation: true,
@@ -839,7 +839,7 @@ app.whenReady().then(async () => {
       onCloseBehaviorChange: handleTrayCloseBehaviorChange,
     });
   } catch (err) {
-    dialog.showErrorBox('Tessera', `Failed to start server: ${err}`);
+    dialog.showErrorBox("Durin's Realm", `Failed to start server: ${err}`);
     requestAppQuit();
   }
 });

@@ -88,7 +88,7 @@ async function startServer() {
       }, 'Server started');
     const displayHost = hostname === '0.0.0.0' || hostname === '::' ? '127.0.0.1' : hostname;
     if (process.env.TESSERA_CLI === '1') {
-      console.log(`\nTessera is running at:\n  http://${displayHost}:${port}\n\nPress Ctrl+C to stop.\n`);
+      console.log(`\nDurin's Realm is running at:\n  http://${displayHost}:${port}\n\nPress Ctrl+C to stop.\n`);
     } else {
       console.log(`> Ready on http://${displayHost}:${port}`);
       console.log(`> WebSocket on ws://${displayHost}:${port}/ws`);

@@ -475,7 +475,7 @@ export function normalizeUserSettings(raw: Partial<UserSettings> | null | undefi
       showToast: true,
       autoGenerateTitle: true,
     },
-    theme: 'auto',
+    theme: 'dark',
     fontSize: DEFAULT_FONT_SCALE,
     enterKeyBehavior: 'send',
     defaultPermissionMode: 'default',

@@ -40,7 +40,7 @@ function buildContextMenu(state: TrayState): Menu {
               click: () => onCloseBehaviorChange('tray'),
             },
             {
-              label: 'Quit Tessera',
+              label: "Quit Durin's Realm",
               type: 'radio' as const,
               checked: closeBehavior === 'quit',
               click: () => onCloseBehaviorChange('quit'),
@@ -52,7 +52,7 @@ function buildContextMenu(state: TrayState): Menu {
 
   return Menu.buildFromTemplate([
     {
-      label: 'Show Tessera',
+      label: "Show Durin's Realm",
       click: () => {
         if (win.isDestroyed()) return;
         win.show();
@@ -84,7 +84,7 @@ export function createTray(
   }
 
   tray = new Tray(icon.isEmpty() ? nativeImage.createEmpty() : icon);
-  tray.setToolTip('Tessera');
+  tray.setToolTip("Durin's Realm");
 
   trayState = {
     win,
